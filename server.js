@@ -6,8 +6,6 @@ const app = express();
 
 const server = http.createServer(app);
 
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "index.html"));
-});
+app.use(express.static(path.join(__dirname, "client", "public")));
 
 server.listen(PORT, () => console.log(`Listening on port ${PORT}`));

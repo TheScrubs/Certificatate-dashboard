@@ -1,0 +1,19 @@
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+}
+/* colors for the site  */
+:root {
+  --primary-color: #1c3b8c;
+  --secondary-color: #6064ec;
+  --tertiary-color: #9eeafc;
+  --quad-color: #f34d77;
+}
+h1 {
+  font-size: 100px;
+  color: var(--quad-color);
+}
