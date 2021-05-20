@@ -19,21 +19,19 @@ h1 {
 }
 
 .wrapper {
-  height: 100vh;
-  position: relative;
+  width:960px;
 }
 
 .container {
   display: grid;
-  height: 85vh;
-  padding-top: 2rem;
+  height: 90vh;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr;
 }
 
 .sidebar {
   width: 3rem;
-  padding-left: 15px;
+  padding: 2rem 0 0 1rem;
   background-image: linear-gradient(
     to bottom, 
     var(--secondary-color), 
