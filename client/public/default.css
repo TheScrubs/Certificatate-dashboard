@@ -25,7 +25,7 @@ h1 {
 .container {
   display: grid;
   height: 90vh;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 2fr 5fr;
   grid-template-rows: 1fr;
 }
 
