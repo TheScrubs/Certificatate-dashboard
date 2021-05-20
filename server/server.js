@@ -14,6 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 // set static folder
 app.use(express.static(path.join(__dirname, "../", "client", "public")));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
