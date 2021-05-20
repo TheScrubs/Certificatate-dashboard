@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 3003;
 const app = express();
 
 // set static folder
