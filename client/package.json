@@ -10,5 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fontsource/montserrat": "^4.3.0"
   }
 }
