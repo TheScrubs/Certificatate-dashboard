@@ -1,6 +1,6 @@
 .sidebar {
     width: 3rem;
-    padding: 1.3rem 1rem;
+    padding: 0 1rem;
     background-image: linear-gradient(
       to bottom, 
       var(--secondary-color), 
@@ -14,7 +14,7 @@
 
 .sidebar .logo {
     display: flex;
-    margin: 0 0 2rem 0;
+    margin: 1rem 0;
     justify-content: center;
 }
 
