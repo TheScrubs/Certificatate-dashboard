@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "helmet": "^4.6.0",
+    "linkedin-profile-scraper": "^2.3.1",
     "passport": "^0.4.1",
     "passport-linkedin-oauth2": "^2.0.0"
   },

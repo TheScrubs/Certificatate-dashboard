@@ -3,7 +3,7 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-
+// const { LinkedInProfileScraper } = require("linkedin-profile-scraper");
 //config dot env
 require("dotenv").config();
 
@@ -83,6 +83,22 @@ const SESSION_SECRET = process.env.SESSION_SECRET;
 //       `);
 //   }
 // });
+
+// (async () => {
+//   const scraper = new LinkedInProfileScraper({
+//     sessionCookieValue:
+//       "AQEDATYQWykFQMv-AAABeb2Tm_MAAAF54aAf81YAiWm_ZApsX0ln70_rSGDhccPi7qOu0lxIcWU0VXpzmj3Kf9TGQffsXsUEydHMuzLMJmm0d-1dFPrz7ca6GmdSTN-4lrd4WD23LvP4klaWpAqjnE0M",
+//     keepAlive: false,
+//   });
+
+//   // Prepare the scraper
+//   // Loading it in memory
+//   await scraper.setup();
+
+//   const result = await scraper.run("https://www.linkedin.com/in/yang-kai-loo/");
+
+//   console.log(result);
+// })();
 
 //set static folder
 app.use(express.static(path.join(__dirname, "../", "client", "public")));
