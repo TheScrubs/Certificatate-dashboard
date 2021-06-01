@@ -26,6 +26,7 @@
     letter-spacing: 1.5px;
     font-size: 26px;
     font-weight: 1000;
+    padding: 0;
 }
 
 .sidebar .logo svg {
