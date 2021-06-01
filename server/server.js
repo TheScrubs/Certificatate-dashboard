@@ -2,6 +2,9 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 
+// usage for file upload
+const routefile = require("./routes/fileServer.js");
+
 //config dot env
 require("dotenv").config();
 
@@ -15,6 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 const SESSION_SECRET = process.env.SESSION_SECRET;
 
 app.use(session({ secret: SESSION_SECRET }));
+
+// <-- usage for file upload --> //
+app.use("/files", routefile);
 
 //set static folder
 app.use(express.static(path.join(__dirname, "../", "client", "public")));
