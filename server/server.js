@@ -1,9 +1,9 @@
 const express = require("express");
 const path = require("path");
-const session = require("express-session");
+const mongoose = require("mongoose");
 
-// usage for file upload
-const routefile = require("./routes/fileServer.js");
+// usage for courses fetching
+const CoursesRoute = require("./routes/CoursesRoute.js");
 
 //config dot env
 require("dotenv").config();
@@ -11,16 +11,21 @@ require("dotenv").config();
 // Initialise express app
 const app = express();
 
+//MONGOOSE DB CONFIG
+const uri = process.env.MONGO_KEY;
+
+// connect to mongo using mongoose
+mongoose
+  .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true })
+  .then(() => console.log("MongoDB is connected via mongoose..."))
+  .catch((err) => console.log(err));
+
 // Body Parser Middleware
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: false }));
 
-const SESSION_SECRET = process.env.SESSION_SECRET;
-
-app.use(session({ secret: SESSION_SECRET }));
-
-// <-- usage for file upload --> //
-app.use("/files", routefile);
+// routes
+app.use("/courses", CoursesRoute);
 
 //set static folder
 app.use(express.static(path.join(__dirname, "../", "client", "public")));

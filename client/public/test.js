@@ -1,6 +1,14 @@
-// This is a test file for logging inside the console.
+let coursesButton = document.querySelector("#courses");
 
-// var gg = document.getElementById('gg')
-
-// console.log(gg.innerHTML);
-// console.log(gg.textContent);
+coursesButton.addEventListener("click", (e) => {
+  axios
+    .post("courses/getUdemyCourses", "gg")
+    .then((res) => {
+      console.log(res.data);
+      alert("Got em!");
+    })
+    .catch((err) => {
+      console.log(err);
+      alert("I failed to get em :(");
+    });
+});
