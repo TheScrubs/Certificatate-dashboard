@@ -129,6 +129,11 @@ app.get("/setup", async (req, res) => {
 //set static folder
 app.use(express.static(path.join(__dirname, "../", "client", "public")));
 
+//The 404 Route (ALWAYS Keep this as the last route)
+app.get("*", function (req, res) {
+  res.sendFile(path.resolve(__dirname, "../", "client", "Error404.html"));
+});
+
 const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
