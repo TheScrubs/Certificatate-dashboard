@@ -1,14 +1,15 @@
 let coursesButton = document.querySelector("#courses");
 
+// **post to route courses/getUdemyCourses  or  courses/getCourseraCourses
 coursesButton.addEventListener("click", (e) => {
   axios
-    .post("courses/getUdemyCourses", "gg")
+    .post("courses/getCourseraCourses", "gg")
     .then((res) => {
       console.log(res.data);
-      alert("Got em!");
+      alert("Check console.");
     })
     .catch((err) => {
       console.log(err);
-      alert("I failed to get em :(");
+      alert("Failed to fetch results.");
     });
 });
