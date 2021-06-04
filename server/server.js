@@ -1,17 +1,25 @@
 const express = require("express");
+const session = require("express-session");
 const path = require("path");
 const mongoose = require("mongoose");
 
-// usage for courses fetching
-const CoursesRoute = require("./routes/CoursesRoute.js");
+// auth
+const passport = require("passport");
+const userModel = require("./models/userSchema.js");
+const isLoggedIn = require("./routes/AuthRoute.js").isLoggedIn;
+require("./config/passportStrategy").passportLocal(passport); // passport config
 
-//config dot env
+// route files
+const CoursesRoute = require("./routes/CoursesRoute.js");
+const AuthRoute = require("./routes/AuthRoute.js").router;
+
+// config dot env
 require("dotenv").config();
 
-// Initialise express app
+// initialise express app
 const app = express();
 
-//MONGOOSE DB CONFIG
+// mongoose DB Config
 const uri = process.env.MONGO_KEY;
 
 // connect to mongo using mongoose
@@ -20,15 +28,44 @@ mongoose
   .then(() => console.log("MongoDB is connected via mongoose..."))
   .catch((err) => console.log(err));
 
-// Body Parser Middleware
+// middleware
 app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ extended: false }));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialised: true,
+  })
+);
+app.use(express.urlencoded({ extended: false })); // replaces body-parser
+
+// Passport.js
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+passport.deserializeUser(function (id, done) {
+  // setup user model
+  userModel.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
 
 // routes
+app.get("/", isLoggedIn, (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../", "client", "index.html"));
+});
+app.use("/auth", AuthRoute);
 app.use("/courses", CoursesRoute);
 
-//set static folder
+// set static folder
 app.use(express.static(path.join(__dirname, "../", "client", "public")));
+
+// the 404 Route (ALWAYS Keep this as the last route)
+app.get("*", function (req, res) {
+  res.sendFile(path.resolve(__dirname, "../", "client", "Error404.html"));
+});
 
 const PORT = process.env.PORT || 3003;
 
