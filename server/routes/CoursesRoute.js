@@ -5,9 +5,6 @@ const CourseraCoursesModel = require("../models/courseraCoursesSchema.js");
 
 const router = express.Router();
 
-//config dot env
-require("dotenv").config();
-
 //get all udemy courses from db collection
 router.post("/getUdemyCourses", (req, res, next) => {
   var UdemyObj = {};
