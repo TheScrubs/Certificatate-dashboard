@@ -4,41 +4,94 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="login/login.css">
+    <link rel="stylesheet" href="login/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="login/fontawesome/css/all.css">
+    <!-- End of Styling -->
+
     <title>Login Page</title>
   </head>
   <body>
-    <form action="/auth/login" method="post">
-      <div>
-        <h1>Login</h1>
-        <h2 id="error" style="display: none">
-          Incorrect username or password!
-        </h2>
-      </div>
-      <div class="form-group">
-        <label>Username: </label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Enter your username"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Enter your password"
-          required
-        />
-      </div>
-      <div>
-        <input type="submit" value="Login" />
-        <a href="/auth/register">Sign up</a>
-      </div>
-      <script src="login.js"></script>
-    </form>
+    <div class="loginbox">
+      <img src="img/logo.jpg" class="logo">
+      <!-- Login Form -->
+      <form action="/auth/login" method="post" class="sign-in">
+        <div>
+          <h1 class="title">LOGIN</h1>
+          <h2 id="error" style="display: none">
+            Incorrect username or password!
+          </h2>
+        </div>
+
+        <!-- User-inputs -->
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <!-- Remember me -->
+        <div class="checkbox-wrapper">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label><br>
+        </div>
+
+        <div>
+          <input type="submit" value="Login" class="login-btn" />
+        </div>
+        
+        <!-- Alternative Login -->
+        <p class="alt-login">or login with Social Platforms</p>
+        
+        <div class="social-media">
+          <!-- Facebook -->
+          <a href="#" class="social-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <!-- Twitter -->
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i> 
+          </a>
+          <!-- Gmail -->
+          <a href="#" class="social-icon">
+            <i class="fab fa-google"></i> 
+          </a>
+          <!-- Linkedin -->
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i> 
+          </a>
+        </div>
+      </form>
+      
+      <!-- Sign-up -->
+      <footer class="others">
+        <div class="register">
+          <p>Not a member?
+            <a href="/auth/register">Sign up now!</a>
+          </p>
+        </div>
+        <a href="#" id="forget">Forget your Username/Password?</a>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="login.js"></script>
   </body>
-</html>
+  </html>
+  
