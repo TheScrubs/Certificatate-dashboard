@@ -44,30 +44,40 @@ router.use(
   express.static(path.join(__dirname, "../", "../", "client", "public"))
 );
 
-// to be changed to register. temporary solution. NEED TO ALTER
-router.get("/register", async (req, res) => {
-  const exists = await userModel.exists({ username: "admin" });
+// serving the register page
+router.get("/register", isLoggedOut, (req, res) => {
+  res.sendFile(
+    path.resolve(__dirname, "../", "../", "client", "register.html")
+  );
+});
 
-  if (exists) {
-    res.redirect("/auth/login");
-    return;
-  }
+router.post("/register", (req, res) => {
+  const { username, password } = req.body;
 
-  bcrypt.genSalt(10, function (err, salt) {
-    if (err) return next(err);
-    bcrypt.hash("pass", salt, function (err, hash) {
-      if (err) return next(err);
+  userModel
+    .findOne({ username })
+    .then((user) => {
+      if (user) return res.redirect("/auth/register?error=true&msg=userexist");
 
-      const newAdmin = new userModel({
-        username: "admin",
-        password: hash,
+      let newUser = new userModel({
+        username,
+        password,
       });
 
-      newAdmin.save();
-
-      res.redirect("/auth/login");
+      // Create salt & hash
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser.save().then((user) => {
+            res.redirect("/auth/login?msg=acccreated");
+          });
+        });
+      });
+    })
+    .catch((err) => {
+      throw err;
     });
-  });
 });
 
 module.exports = {
