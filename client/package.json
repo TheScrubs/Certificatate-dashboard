@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource/montserrat": "^4.3.0",
     "@fontsource/roboto": "^4.3.0",
+    "@fortawesome/fontawesome-free": "^5.15.3",
     "axios": "^0.21.1"
   }
 }
