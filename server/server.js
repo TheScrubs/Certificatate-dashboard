@@ -34,7 +34,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialised: true,
+    saveUninitialized: true,
   })
 );
 app.use(express.urlencoded({ extended: false })); // replaces body-parser
