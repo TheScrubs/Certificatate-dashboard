@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="login/login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="login/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <!-- End of Styling -->
 
     <title>Login Page</title>
   </head>
   <body>
     <div class="loginbox">
-      <img src="img/logo.jpg" class="logo">
+      <img src="img/logo.jpg" class="logo" />
       <!-- Login Form -->
       <form action="/auth/login" method="post" class="sign-in">
         <div>
@@ -47,17 +50,17 @@
 
         <!-- Remember me -->
         <div class="checkbox-wrapper">
-          <input type="checkbox" id="remember">
-          <label for="remember">Remember me</label><br>
+          <input type="checkbox" id="remember" />
+          <label for="remember">Remember me</label><br />
         </div>
 
         <div>
           <input type="submit" value="Login" class="login-btn" />
         </div>
-        
+
         <!-- Alternative Login -->
         <p class="alt-login">or login with Social Platforms</p>
-        
+
         <div class="social-media">
           <!-- Facebook -->
           <a href="#" class="social-icon">
@@ -65,23 +68,24 @@
           </a>
           <!-- Twitter -->
           <a href="#" class="social-icon">
-            <i class="fab fa-twitter"></i> 
+            <i class="fab fa-twitter"></i>
           </a>
           <!-- Gmail -->
           <a href="#" class="social-icon">
-            <i class="fab fa-google"></i> 
+            <i class="fab fa-google"></i>
           </a>
           <!-- Linkedin -->
-          <a href="#" class="social-icon">
-            <i class="fab fa-linkedin-in"></i> 
+          <a href="/auth/linkedIn" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
           </a>
         </div>
       </form>
-      
+
       <!-- Sign-up -->
       <footer class="others">
         <div class="register">
-          <p>Not a member?
+          <p>
+            Not a member?
             <a href="/auth/register">Sign up now!</a>
           </p>
         </div>
@@ -92,5 +96,4 @@
     <!-- Scripts -->
     <script src="login.js"></script>
   </body>
-  </html>
-  
+</html>

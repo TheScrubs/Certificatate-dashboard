@@ -80,6 +80,23 @@ router.post("/register", (req, res) => {
     });
 });
 
+// Linkedin login
+router.get(
+  "/linkedin",
+  passport.authenticate("linkedin", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login?error=true",
+  })
+);
+
+router.get(
+  "/linkedin/callback",
+  passport.authenticate("linkedin", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login?error=true",
+  })
+);
+
 module.exports = {
   router: router,
   isLoggedIn: isLoggedIn,
