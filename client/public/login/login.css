@@ -1,0 +1,204 @@
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+}
+/* Global variables that can be reused  */
+:root {
+  --primary-color: rgba(40, 22, 248, 0.13);
+  --secondary-color: rgba(100, 196, 226, 0.13);
+  --tertiary-color: rgba(228, 231, 241, 0.13);
+  --quad-color: #f34d77;
+}
+/* Background */
+body{
+    background: var(--tertiary-color);
+    background: cover;
+    background-position: center;
+}
+
+/* Form Container */
+.loginbox{
+    width: 750px;
+    height: 600px;
+    background: var(--secondary-color);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.logo{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    top: -100px;
+    left: calc(50% - 100px);
+}
+
+/* Main Login Form */
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5rem;
+    grid-column: 1 / 2;
+    grid-row: 1/2 ;
+}
+.title{
+    font-size: 2.2rem;
+    color: var(--quad-color);
+    margin-bottom: 10px;
+    margin-top: 100px;
+}
+.form-group{
+    max-width: 380px;
+    width: 100%;
+    height: 55px;
+    background-color: rgb(27, 15, 15);
+    margin: 10px 0;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+    position: relative;
+}
+.form-group i{
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+    font-size: 1.5rem;
+}
+.form-group input{
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #fff;
+}
+.form-group input:placeholder-shown{
+    color: #aaa;
+    font-weight: 500;
+}
+
+.checkbox-wrapper{
+    position: relative;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+}
+input[type="checkbox"]{
+    appearance: none;
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: #d5d5d5;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+label[for="remember"]{
+    color: black;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+}
+input[type="checkbox"]:after{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    font-size: 12px;
+    content: "\f00c";
+    color: white;
+    display: none;
+}
+input[type="checkbox"]:hover{
+    background-color: #a5a5a5;
+}
+input[type="checkbox"]:checked{
+    background-color: #5bcd3e;
+}
+input[type="checkbox"]:checked:after{
+    display: block;
+}
+input:checked + label[for="remember"]{
+    font-weight: bold;
+    color: var(--quad-color);
+}
+
+.login-btn{
+    width: 200px;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-radius: 48px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    transition: all 0.5s;
+}
+.login-btn:hover{
+    background-color: var(--quad-color);
+}
+
+/* Alternate Login methods */
+.alt-login{
+    padding: 0.7rem 0;
+    color: #333;
+}
+.social-media{
+    display: flex;
+    justify-content: center;
+}
+.social-icon{
+    height: 46px;
+    width: 46px;
+    border: 1px solid #333;
+    margin: 0 0.45rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    transition: all 0.5s;
+}
+.social-icon:hover{
+    color: var(--quad-color);
+    border-color: var(--quad-color);
+}
+
+
+/* Registration */
+.others{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
+.register{
+    font-size: 0.1rem;
+    padding-left: 20px;
+    color: lightslategray;
+}
+
+#forget{
+    font-style: italic;
+    padding-right: 20px;
+}
