@@ -20,7 +20,7 @@ function isLoggedOut(req, res, next) {
 
 // serving the login page
 router.get("/login", isLoggedOut, (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../", "../", "client", "login.html"));
+  res.sendFile(path.resolve(__dirname, "../", "../", "client", "dist", "login.html"));
 });
 
 // authetication of login request from user

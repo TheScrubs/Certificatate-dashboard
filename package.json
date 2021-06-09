@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon server",
-    "dev": "SET NODE_ENV=development&&nodemon server --prefix server&&npm run build --prefix client"
+    "dev": "npm run build --prefix client&&nodemon server --prefix server"
   },
   "author": "",
   "license": "ISC",

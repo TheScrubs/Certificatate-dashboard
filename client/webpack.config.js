@@ -33,7 +33,7 @@ module.exports = {
         // Generates default index.html
         new HtmlWebpackPlugin({
             template: "./src/assets/index.html"
-        }) 
+        }), 
     ].concat(multipleHtmlPlugins), // Rest of the html pages
     module: {
         rules: [
