@@ -3,6 +3,12 @@ const session = require("express-session");
 const path = require("path");
 const mongoose = require("mongoose");
 
+// webpack
+const config = require("./webpack.config.js");
+const webpack = require("webpack");
+const middleware = require("webpack-dev-middleware"); //webpack hot reloading middleware
+const compiler = webpack(config);
+
 // auth
 const passport = require("passport");
 const userModel = require("./models/userSchema.js");
@@ -33,7 +39,12 @@ mongoose
   .catch((err) => console.log(err));
 
 // middleware
-app.use(express.json({ limit: "50mb" }));
+app.use(
+  middleware(compiler, {
+    // webpack-dev-middleware options
+  })
+);
+app.use(express.json({ limit: "10mb" }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,

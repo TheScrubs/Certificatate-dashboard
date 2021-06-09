@@ -1,3 +1,6 @@
+// import axios from "axios";
+// import "./sidebar/sidebar.css";
+
 let coursesButton = document.querySelector("#courses");
 
 // **post to route courses/getUdemyCourses  or  courses/getCourseraCourses
