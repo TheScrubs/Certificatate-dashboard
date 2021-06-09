@@ -6,8 +6,12 @@ const mongoose = require("mongoose");
 // auth
 const passport = require("passport");
 const userModel = require("./models/userSchema.js");
+const linkedinModel = require("./models/linkedinUserSchema.js");
 const isLoggedIn = require("./routes/AuthRoute.js").isLoggedIn;
-require("./config/passportStrategy").passportLocal(passport); // passport config
+
+// passport config
+require("./config/passportStrategy").passportLocal(passport);
+require("./config/passportStrategy").passportLinkedIn(passport);
 
 // route files
 const CoursesRoute = require("./routes/CoursesRoute.js");
@@ -34,7 +38,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialised: true,
+    saveUninitialized: true,
   })
 );
 app.use(express.urlencoded({ extended: false })); // replaces body-parser
@@ -43,11 +47,21 @@ app.use(express.urlencoded({ extended: false })); // replaces body-parser
 app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  var key = {
+    id: user.id,
+    type: user.authType,
+  };
+  done(null, key);
 });
-passport.deserializeUser(function (id, done) {
-  // setup user model
-  userModel.findById(id, function (err, user) {
+passport.deserializeUser(function (key, done) {
+  let model;
+  if (key.type === "local") {
+    model = userModel;
+  } else if (key.type === "linkedin") {
+    model = linkedinModel;
+  }
+
+  model.findById(key.id, function (err, user) {
     done(err, user);
   });
 });
