@@ -2,9 +2,11 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,16 @@
     "@fontsource/montserrat": "^4.3.0",
     "@fontsource/roboto": "^4.3.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "webpack": "^5.38.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }

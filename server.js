@@ -5,17 +5,17 @@ const mongoose = require("mongoose");
 
 // auth
 const passport = require("passport");
-const userModel = require("./models/userSchema.js");
-const linkedinModel = require("./models/linkedinUserSchema.js");
-const isLoggedIn = require("./routes/AuthRoute.js").isLoggedIn;
+const userModel = require("./server/models/userSchema.js");
+const linkedinModel = require("./server/models/linkedinUserSchema.js");
+const isLoggedIn = require("./server/routes/AuthRoute.js").isLoggedIn;
 
 // passport config
-require("./config/passportStrategy").passportLocal(passport);
-require("./config/passportStrategy").passportLinkedIn(passport);
+require("./server/config/passportStrategy").passportLocal(passport);
+require("./server/config/passportStrategy").passportLinkedIn(passport);
 
 // route files
-const CoursesRoute = require("./routes/CoursesRoute.js");
-const AuthRoute = require("./routes/AuthRoute.js").router;
+const CoursesRoute = require("./server/routes/CoursesRoute.js");
+const AuthRoute = require("./server/routes/AuthRoute.js").router;
 
 // config dot env
 require("dotenv").config();
@@ -74,11 +74,11 @@ app.use("/auth", AuthRoute);
 app.use("/courses", CoursesRoute);
 
 // set static folder
-app.use(express.static(path.join(__dirname, "../", "client", "public")));
+// app.use(express.static(path.join(__dirname, "../", "client", "public")));
 
 // the 404 Route (ALWAYS Keep this as the last route)
 app.get("*", function (req, res) {
-  res.sendFile(path.resolve(__dirname, "../", "client", "Error404.html"));
+  res.sendFile(path.resolve(__dirname, "./", "client", "Error404.html"));
 });
 
 const PORT = process.env.PORT || 3003;

@@ -4,9 +4,8 @@
   "description": "Dashboard which allows people to centralise their cert storage, and tap into in-house analytics to determine which course they should go to next.",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon server",
+    "dev": "SET NODE_ENV=development&&nodemon server --prefix server&&npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",

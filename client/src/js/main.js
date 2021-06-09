@@ -1,3 +1,10 @@
+const axios = require('axios')
+
+// Load css
+require('../css/default.css')
+require('../css/mainBody.css')
+require('../css/sidebar.css')
+
 let coursesButton = document.querySelector("#courses");
 
 // **post to route courses/getUdemyCourses  or  courses/getCourseraCourses

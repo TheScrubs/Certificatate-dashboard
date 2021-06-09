@@ -1,3 +1,6 @@
+// css
+require('../css/login.css')
+
 // getting the url parameters
 var url_string = window.location.href;
 var url = new URL(url_string);
