@@ -73,7 +73,7 @@ app.use("/auth", AuthRoute);
 app.use("/courses", CoursesRoute);
 
 // set static folder
-app.use(express.static(path.join(__dirname, "./", "client", "dist")));
+// app.use(express.static(path.join(__dirname, "./", "client", "dist")));
 
 // the 404 Route (ALWAYS Keep this as the last route)
 app.get("*", function (req, res) {
