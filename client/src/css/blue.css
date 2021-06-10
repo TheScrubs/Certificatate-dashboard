@@ -1,11 +1,12 @@
 :root{
-    --mainColor: #15202B;
-    --secondaryColor: #192734;
+    --primary-color: #15202B;
+    --secondary-color: #192734;
     
     --borderColor: #164D56;
 
-    --mainText: #fff;
-    --secondaryText: #eeeeee;
+    --mainText-color: #fff;
+    --secondaryText-color: #eeeeee;
 
     --buttonColor: #17a2b8;
+    --buttonHover-color: #2164a3;
 }

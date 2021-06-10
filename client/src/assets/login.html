@@ -5,95 +5,120 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" type="text/css" href="login/login.css" />
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
+    <link id="theme-style" rel="stylesheet" type="text/css" href="">
     <!-- End of Styling -->
 
     <title>Login Page</title>
   </head>
   <body>
-    <div class="loginbox">
-      <img src="img/logo.jpg" class="logo" />
-      <!-- Login Form -->
-      <form action="/auth/login" method="post" class="sign-in">
-        <div>
-          <h1 class="title">LOGIN</h1>
-          <h2 id="error" style="display: none">
-            Incorrect username or password!
-          </h2>
+    <div class="theme-wrapper">
+      <div class="color-comb">
+        <h2 class="theme-text">Which theme is better?</h2>
+        <div id="theme-options-wrapper">
+          <div data-mode="light" class="theme-dot" id="light-mode"></div>
+          <div data-mode="blue" class="theme-dot" id="blue-mode"></div>
+          <div data-mode="green" class="theme-dot" id="green-mode"></div>
+          <div data-mode="purple" class="theme-dot" id="purple-mode"></div>
         </div>
+      </div>
 
-        <!-- User-inputs -->
-        <div class="form-group">
-          <i class="fas fa-user"></i>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="Enter your username"
-            required
+      <div class="loginbox">
+        <svg class="logo"
+          width="39"
+          height="32"
+          viewBox="0 0 39 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M19.5 32C30.2696 32 39 24.8366 39 16C39 15.5793 38.9802 15.1624 38.9414 14.7499C37.5446 17.6966 34.5844 19.8934 30.82 19.8934C23.58 19.8934 19.3144 11.7675 23.4263 5.80845C24.8517 3.74269 26.9265 2.50155 29.1321 2.08503C26.2907 0.758003 23.0033 0 19.5 0C8.73045 0 0 7.16344 0 16C0 24.8366 8.73045 32 19.5 32Z"
+            fill="black"
           />
-        </div>
-        <div class="form-group">
-          <i class="fas fa-lock"></i>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter your password"
-            required
-          />
-        </div>
+        </svg>
+        <!-- Login Form -->
+        <form action="/auth/login" method="post" class="sign-in">
+          <div>
+            <h1 class="title">LOGIN</h1>
+            <h2 id="error" style="display: none">
+              Incorrect username or password!
+            </h2>
+          </div>
 
-        <!-- Remember me -->
-        <div class="checkbox-wrapper">
-          <input type="checkbox" id="remember" />
-          <label for="remember">Remember me</label><br />
-        </div>
+          <!-- User-inputs -->
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
 
-        <div>
-          <input type="submit" value="Login" class="login-btn" />
-        </div>
+          <!-- Remember me -->
+          <div class="checkbox-wrapper">
+            <input type="checkbox" id="remember" />
+            <label for="remember">Remember me</label><br />
+          </div>
 
-        <!-- Alternative Login -->
-        <p class="alt-login">or login with Social Platforms</p>
+          <div>
+            <input type="submit" value="Login" class="login-btn" />
+          </div>
 
-        <div class="social-media">
-          <!-- Facebook -->
-          <a href="#" class="social-icon">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <!-- Twitter -->
-          <a href="#" class="social-icon">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <!-- Gmail -->
-          <a href="#" class="social-icon">
-            <i class="fab fa-google"></i>
-          </a>
-          <!-- Linkedin -->
-          <a href="/auth/linkedIn" class="social-icon">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-        </div>
-      </form>
+          <!-- Alternative Login -->
+          <p class="alt-login">or login with Social Platforms</p>
 
-      <!-- Sign-up -->
-      <footer class="others">
-        <div class="register">
-          <p>
-            Not a member?
-            <a href="/auth/register">Sign up now!</a>
-          </p>
-        </div>
-        <a href="#" id="forget">Forget your Username/Password?</a>
-      </footer>
+          <div class="social-media">
+            <!-- Facebook -->
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <!-- Twitter -->
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <!-- Gmail -->
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <!-- Linkedin -->
+            <a href="/auth/linkedIn" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </form>
+
+        <!-- Sign-up -->
+        <footer class="others">
+          <div class="register">
+            <p>
+              Not a member?
+              <a href="/auth/register">Sign up now!</a>
+            </p>
+          </div>
+          <a href="#" id="forget">Forget your Username/Password?</a>
+        </footer>
+      </div>
     </div>
-
     <!-- Scripts -->
-    <script src="login.js"></script>
+    <script src="../js/login.js"></script>
   </body>
 </html>
