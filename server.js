@@ -3,12 +3,6 @@ const session = require("express-session");
 const path = require("path");
 const mongoose = require("mongoose");
 
-// // webpack
-// const config = require("./server/webpack.config.js");
-// const webpack = require("webpack");
-// const middleware = require("webpack-dev-middleware"); //webpack hot reloading middleware
-// const compiler = webpack(config);
-
 // auth
 const passport = require("passport");
 const userModel = require("./server/models/userSchema.js");
@@ -38,12 +32,6 @@ mongoose
   .then(() => console.log("MongoDB is connected via mongoose..."))
   .catch((err) => console.log(err));
 
-// middleware
-// app.use(
-//   middleware(compiler, {
-//     // webpack-dev-middleware options
-//   })
-// );
 app.use(express.json({ limit: "10mb" }));
 app.use(
   session({
@@ -89,7 +77,9 @@ app.use(express.static(path.join(__dirname, "./", "client", "dist")));
 
 // the 404 Route (ALWAYS Keep this as the last route)
 app.get("*", function (req, res) {
-  res.sendFile(path.resolve(__dirname, "./", "client", "dist", "Error404.html"));
+  res.sendFile(
+    path.resolve(__dirname, "./", "client", "dist", "Error404.html")
+  );
 });
 
 const PORT = process.env.PORT || 3003;
