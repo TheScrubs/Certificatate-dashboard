@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin") // To copy images to dist folder
 
 // Dynamic html page generation
 let htmlPageNames = ['login', 'register', 'Error404'];
@@ -21,7 +22,8 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
-        publicPath: '/'
+        publicPath: '/',
+        assetModuleFilename: './assets/[name][ext]'
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
@@ -30,11 +32,21 @@ module.exports = {
         hot: true,
     },
     plugins: [
+        new CopyPlugin({
+            patterns: [
+              {
+                from: "./src/assets/img",
+                to: "./img",
+                toType: "dir",
+              },
+            ],
+        }),
         // Generates default index.html
         new HtmlWebpackPlugin({
             template: "./src/assets/index.html"
         }), 
     ].concat(multipleHtmlPlugins), // Rest of the html pages
+    
     module: {
         rules: [
             { 
@@ -46,7 +58,7 @@ module.exports = {
             },
             // {
             //     test: /\.(html)$/i,
-            //     use: [{ loader: 'html-loader' }] // Loader for all the images
+            //     use: [{ loader: 'html-loader', options: { sources: true, } }] // Loader for all the images
             // },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
