@@ -10,7 +10,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <link id="theme-style" rel="stylesheet" type="text/css" href="">
     <!-- End of Styling -->
 
     <title>Login Page</title>
@@ -18,24 +17,15 @@
   <body>
 
     <div class="loginbox">
-      <svg class="logo"
-        width="39"
-        height="32"
-        viewBox="0 0 39 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M19.5 32C30.2696 32 39 24.8366 39 16C39 15.5793 38.9802 15.1624 38.9414 14.7499C37.5446 17.6966 34.5844 19.8934 30.82 19.8934C23.58 19.8934 19.3144 11.7675 23.4263 5.80845C24.8517 3.74269 26.9265 2.50155 29.1321 2.08503C26.2907 0.758003 23.0033 0 19.5 0C8.73045 0 0 7.16344 0 16C0 24.8366 8.73045 32 19.5 32Z"
-          fill="black"
-        />
+      <svg class="logo" width="133" height="121" viewBox="0 0 133 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M97.4824 8.06467C90.0534 9.99509 83.1759 14.7896 78.4303 22.4152C71.2935 33.8832 71.5377 47.3224 76.7567 57.8873C81.9769 68.4547 92.2188 76.2214 105.104 76.2214C116.886 76.2214 126.456 69.7291 132 60.5396C131.976 93.2956 102.751 120 66.5 120C30.2343 120 1 93.2741 1 60.5C1 27.7259 30.2343 1 66.5 1C77.7123 1 88.2614 3.5588 97.4824 8.06467Z" fill="#EB8B61" stroke="#CEB2B2" stroke-width="2"/>
+        </svg>
+        
       </svg>
       <!-- Login Form -->
       <form action="/auth/login" method="post" class="sign-in">
         <div>
-          <h1 class="title">LOGIN</h1>
+          <h1 class="title">Welcome</h1>
           <h2 id="error" style="display: none">
             Incorrect username or password!
           </h2>
@@ -100,8 +90,7 @@
       <footer class="others">
         <div class="register">
           <p>
-            Not a member?
-            <a href="/auth/register">Sign up now!</a>
+            <a id="sign-up" href="/auth/register">Not a member? Sign up now!</a>
           </p>
         </div>
         <a href="#" id="forget">Forget your Username/Password?</a>
