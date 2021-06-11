@@ -25,61 +25,6 @@ body{
     background: cover;
     background-position: center;
 }
-.theme-wrapper{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-template-areas: 
-    'login'
-    'theme';
-}
-
-/* Color-Theme */
-.color-comb{
-    display: grid;
-    grid-area: theme;
-    justify-content: center;
-    align-items: center;
-}
-
-.theme-text{
-    color: var(--mainText-color);
-}
-
-#theme-options-wrapper{
-    display: flex;
-    justify-content: center;
-}
-
-.theme-dot{
-    height: 30px;
-    width: 30px;
-    background-color: black;
-    border-radius: 50%;
-    cursor: pointer;
-
-    margin: 5px;
-    border: 2px solid var(--borderColor);
-
-    box-shadow: -1px 1px 3px -1px rgba(0,0,0,0.75);
-}
-
-.theme-dot:hover{
-    border-width: 3px;
-}
-
-#light-mode{
-    background-color: #fff;
-}
-#blue-mode{
-    background-color: #192734;
-}
-#green-mode{
-    background-color: #78866b;
-}
-#purple-mode{
-    background-color: #7e4c74;
-}
 
 /* Form Container */
 .loginbox{
