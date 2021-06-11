@@ -100,6 +100,6 @@ router.get(
 );
 
 module.exports = {
-  router: router,
-  isLoggedIn: isLoggedIn,
+  router,
+  isLoggedIn,
 };

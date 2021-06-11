@@ -30,6 +30,14 @@ module.exports = {
     compress: true,
     // publicPath: "/",
     hot: true,
+    proxy: {
+      '/': { 
+        target: 'http://localhost:3003',
+        onProxyReq: function(request) {
+          request.setHeader("origin", "http://localhost:3003");
+        },
+      }
+    },
   },
   plugins: [
     new CopyPlugin({

@@ -66,22 +66,27 @@ passport.deserializeUser(function (key, done) {
 });
 
 // routes
-app.get("/", isLoggedIn, (req, res) => {
-  res.sendFile(path.resolve(__dirname, "./", "client", "dist", "index.html"));
-});
 app.use("/auth", AuthRoute);
 app.use("/courses", CoursesRoute);
 
-// set static folder
-// app.use(express.static(path.join(__dirname, "./", "client", "dist")));
+// All code below only to be used in production
+if (process.env.NODE_ENV === 'production') {
+  // set static folder
+  app.use(express.static(path.join(__dirname, "./", "client", "dist")));
+  
+  app.get("/", isLoggedIn, (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./", "client", "dist", "index.html"));
+  });
+  
+  // // the 404 Route (ALWAYS Keep this as the last route)
+  app.get("*", function (req, res) {
+    res.sendFile(
+      path.resolve(__dirname, "./", "client", "dist", "Error404.html")
+    );
+  });
 
-// the 404 Route (ALWAYS Keep this as the last route)
-app.get("*", function (req, res) {
-  res.sendFile(
-    path.resolve(__dirname, "./", "client", "dist", "Error404.html")
-  );
-});
+}
 
 const PORT = process.env.PORT || 3003;
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
