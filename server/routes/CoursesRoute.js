@@ -6,15 +6,19 @@ const CourseraCoursesModel = require("../models/courseraCoursesSchema.js");
 const router = express.Router();
 
 //get all udemy courses from db collection
-router.post("/getUdemyCourses", (req, res, next) => {
+router.get("/getUdemyCourses", (req, res) => {
   var UdemyObj = {};
+
+  console.log('I am inside get Udemy courses')
 
   UdemyCoursesModel.find({}).then((courses) => {
     courses.map((course) => {
       UdemyObj[course._id] = course;
     });
-    return res.json(UdemyObj);
-  });
+
+    // On success
+    return res.status(200).json(UdemyObj);
+  }).catch(err => { console.log('Err getting Udemy Courses', err) })
 });
 
 //get all udemy courses from db collection
