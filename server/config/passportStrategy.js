@@ -38,7 +38,7 @@ function passportLinkedIn(passport) {
       {
         clientID: LINKEDIN_KEY,
         clientSecret: LINKEDIN_SECRET,
-        callbackURL: "http://localhost:3003/auth/linkedin/callback",
+        callbackURL: "http://localhost:8080/auth/linkedin/callback",
         scope: ["r_emailaddress", "r_liteprofile"],
       },
       (accessToken, refreshToken, profile, done) => {

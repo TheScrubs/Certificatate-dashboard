@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const userModel = require("./server/models/userSchema.js");
 const linkedinModel = require("./server/models/linkedinUserSchema.js");
-const isLoggedIn = require("./server/routes/AuthRoute.js").isLoggedIn;
 
 // passport config
 require("./server/config/passportStrategy").passportLocal(passport);
@@ -70,21 +69,20 @@ app.use("/auth", AuthRoute);
 app.use("/courses", CoursesRoute);
 
 // All code below only to be used in production
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   // set static folder
   app.use(express.static(path.join(__dirname, "./", "client", "dist")));
-  
-  app.get("/", isLoggedIn, (req, res) => {
+
+  app.get("/", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./", "client", "dist", "index.html"));
   });
-  
-  // // the 404 Route (ALWAYS Keep this as the last route)
+
+  // the 404 Route (ALWAYS Keep this as the last route)
   app.get("*", function (req, res) {
     res.sendFile(
       path.resolve(__dirname, "./", "client", "dist", "Error404.html")
     );
   });
-
 }
 
 const PORT = process.env.PORT || 3003;
