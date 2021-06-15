@@ -1,5 +1,5 @@
 // css
-require('../css/login.css')
+import "../css/login.css";
 
 // getting the url parameters
 var url_string = window.location.href;

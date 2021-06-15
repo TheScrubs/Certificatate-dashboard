@@ -15,7 +15,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/auth/login?error=true",
+    failureRedirect: "/login?error=true",
   })
 );
 
@@ -31,7 +31,7 @@ router.post("/register", (req, res) => {
   userModel
     .findOne({ username })
     .then((user) => {
-      if (user) return res.send("user already registered");
+      if (user) return res.redirect("/register?error=true");
 
       let newUser = new userModel({
         username,
@@ -44,7 +44,7 @@ router.post("/register", (req, res) => {
           if (err) throw err;
           newUser.password = hash;
           newUser.save().then((user) => {
-            res.send("User registered");
+            res.redirect("/login");
           });
         });
       });

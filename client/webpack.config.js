@@ -7,7 +7,7 @@ let htmlPageNames = ["login", "register", "Error404"];
 let multipleHtmlPlugins = htmlPageNames.map((name) => {
   return new HtmlWebpackPlugin({
     template: `./src/assets/${name}.html`, // relative path to the HTML files
-    filename: `${name}.html`, // output HTML files
+    filename: `${name}`, // output HTML files
     // chunks: [`${name}`] // respective JS files
   });
 });
@@ -31,12 +31,12 @@ module.exports = {
     // publicPath: "/",
     hot: true,
     proxy: {
-      '/': { 
-        target: 'http://localhost:3003',
-        onProxyReq: function(request) {
+      "/": {
+        target: "http://localhost:3003",
+        onProxyReq: function (request) {
           request.setHeader("origin", "http://localhost:3003");
         },
-      }
+      },
     },
   },
   plugins: [
