@@ -34,9 +34,21 @@ const mainPageFunction = () => {
       alert("Server error. Please try again.");
     });
 
-  if (window.location.pathname !== "/") {
-    window.location.href = "/";
-  }
+  fetch("/")
+    .then((res) => {
+      return res.text();
+    })
+    .then(function (html) {
+      // Initialize the DOM parser
+      var parser = new DOMParser();
+
+      // Parse the text
+      var doc = parser.parseFromString(html, "text/html");
+      document.body.innerHTML = doc.body.innerHTML;
+    })
+    .catch(function (err) {
+      console.log("Failed to fetch page: ", err);
+    });
 };
 const loginPageFunction = () => {
   axios
@@ -51,18 +63,42 @@ const loginPageFunction = () => {
       alert("Server error. Please try again.");
     });
 
-  if (window.location.pathname !== "/login") {
-    window.location.href = "/login";
-  }
+  fetch("/login")
+    .then((res) => {
+      return res.text();
+    })
+    .then(function (html) {
+      // Initialize the DOM parser
+      var parser = new DOMParser();
+
+      // Parse the text
+      var doc = parser.parseFromString(html, "text/html");
+      document.body.innerHTML = doc.body.innerHTML;
+    })
+    .catch(function (err) {
+      console.log("Failed to fetch page: ", err);
+    });
 };
 
 router.on({
   "/login": loginPageFunction,
   "/login/:error": function () {},
   "/register": function () {
-    if (window.location.pathname !== "/register") {
-      window.location.href = "/register";
-    }
+    fetch("/register")
+      .then((res) => {
+        return res.text();
+      })
+      .then(function (html) {
+        // Initialize the DOM parser
+        var parser = new DOMParser();
+
+        // Parse the text
+        var doc = parser.parseFromString(html, "text/html");
+        document.body.innerHTML = doc.body.innerHTML;
+      })
+      .catch(function (err) {
+        console.log("Failed to fetch page: ", err);
+      });
   },
   "/": mainPageFunction,
 });
