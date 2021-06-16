@@ -30,6 +30,7 @@ const mainPageFunction = () => {
     })
     .catch((err) => {
       console.log(err);
+      router.navigate("/login");
       alert("Server error. Please try again.");
     });
 
