@@ -18,10 +18,10 @@
   --buttonHover-color: #fb8f8f;
 }
 /* Background */
-body{
+/* body{
     background: url(../assets/img/login-bg.jpg) no-repeat;
     background-size: cover;
-}
+} */
 
 /* Form Container */
 .loginbox{
