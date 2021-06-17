@@ -16,7 +16,7 @@ export const mainPageFunction = () => {
           .then((res) => {
             console.log(res.data);
             alert("Check console.");
-            return res.data
+            return res.data;
           })
           .catch((err) => {
             console.log("did not send request to Udemy courses");

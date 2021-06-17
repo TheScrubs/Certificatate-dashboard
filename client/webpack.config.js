@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin"); // To copy images to dist folder
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // Dynamic html page generation
 let htmlPageNames = ["login", "register", "Error404"];
@@ -40,6 +41,7 @@ module.exports = {
     },
   },
   plugins: [
+    new MiniCssExtractPlugin(),
     new CopyPlugin({
       patterns: [
         {
@@ -59,7 +61,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: "css-loader" },
+        ],
       },
       // {
       //     test: /\.(html)$/i,
