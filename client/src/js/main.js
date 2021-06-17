@@ -2,6 +2,7 @@ import { isomorphicRouter } from "./universalRouter.js"; // isomorphic router
 import { CourseList, Course } from "./certificates.js";
 import { getCourses } from "./backendFunctions";
 
+// js logic from other pages
 import { loginFunction } from "./login.js";
 import { registerFunction } from "./register.js";
 
