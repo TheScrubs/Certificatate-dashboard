@@ -17,7 +17,7 @@ const CoursesRoute = require("./server/routes/CoursesRoute.js");
 const AuthRoute = require("./server/routes/AuthRoute.js").router;
 
 // isomorphicRouter
-const isomorphicRouter = require("./client/src/js/backrouter");
+import { isomorphicRouter } from "./client/src/js/universalRouter";
 
 // config dot env
 require("dotenv").config();
@@ -75,24 +75,31 @@ app.use("/courses", CoursesRoute);
 if (process.env.NODE_ENV === "production") {
   // set static folder
   app.use(express.static(path.join(__dirname, "./", "client", "dist")));
-
-  app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./", "client", "dist", "index.html"));
-  });
-
-  // the 404 Route (ALWAYS Keep this as the last route)
-  app.get("*", function (req, res) {
-    res.sendFile(
-      path.resolve(__dirname, "./", "client", "dist", "Error404.html")
-    );
-  });
-} else {
-  app.get("/gg", (req, res) => {
-    isomorphicRouter.resolve("/register").then((page) => {
-      res.send(`<!doctype html>${page.content}`);
-    });
-  });
 }
+
+app.get("/", (req, res) => {
+  isomorphicRouter.resolve("/").then((page) => {
+    if (page.redirect) {
+      res.redirect(page.redirect);
+    } else {
+      res.send(`<!doctype html>${page.content}`);
+    }
+  });
+});
+app.get("/login", (req, res) => {
+  isomorphicRouter.resolve("/login").then((page) => {
+    if (page.redirect) {
+      res.redirect(page.redirect);
+    } else {
+      res.send(`<!doctype html>${page.content}`);
+    }
+  });
+});
+app.get("/register", (req, res) => {
+  isomorphicRouter.resolve("/register").then((page) => {
+    res.send(`<!doctype html>${page.content}`);
+  });
+});
 
 const PORT = process.env.PORT || 3003;
 

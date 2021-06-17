@@ -1,4 +1,4 @@
-import isomorphicRouter from "./frontrouter.js"; // isomorphic router
+import { isomorphicRouter } from "./universalRouter.js"; // isomorphic router
 import { CourseList, Course } from "./certificates.js";
 import { getCourses } from "./backendFunctions";
 
@@ -10,6 +10,7 @@ import "../css/sidebar.css";
 let coursesButton = document.body.querySelector("#courses");
 let courses = new CourseList();
 
+// frontend SPA routing function
 async function render() {
   const page = await isomorphicRouter.resolve(location.pathname);
   if (page.redirect) {

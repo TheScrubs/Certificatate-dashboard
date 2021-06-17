@@ -8,24 +8,19 @@ const routes = [
       let authenticateStatus;
 
       try {
-        const authenticate = await axios.get("/auth/check");
+        const authenticate = await axios.get(
+          "http://localhost:8080/auth/check"
+        );
         authenticateStatus = authenticate.data;
       } catch {
         authenticateStatus = false;
       }
 
       if (authenticateStatus) {
-        return fetch("/")
+        return axios
+          .get("http://localhost:8080/")
           .then((res) => {
-            return res.text();
-          })
-          .then(function (html) {
-            // Initialize the DOM parser
-            var parser = new DOMParser();
-            // Parse the text
-            var doc = parser.parseFromString(html, "text/html");
-
-            return { content: doc.body.innerHTML };
+            return { content: res.data };
           })
           .catch(function (err) {
             console.log("Failed to fetch page: ", err);
@@ -40,23 +35,18 @@ const routes = [
     async action() {
       let authenticateStatus;
       try {
-        const authenticate = await axios.get("/auth/check");
+        const authenticate = await axios.get(
+          "http://localhost:8080/auth/check"
+        );
         authenticateStatus = authenticate.data;
       } catch {
         authenticateStatus = false;
       }
       if (!authenticateStatus) {
-        return fetch("/login")
+        return axios
+          .get("http://localhost:8080/login")
           .then((res) => {
-            return res.text();
-          })
-          .then(function (html) {
-            // Initialize the DOM parser
-            var parser = new DOMParser();
-
-            // Parse the text
-            var doc = parser.parseFromString(html, "text/html");
-            return { content: doc.body.innerHTML };
+            return { content: res.data };
           })
           .catch(function (err) {
             console.log("Failed to fetch page: ", err);
@@ -81,4 +71,4 @@ const routes = [
   },
 ];
 
-export default new UniversalRouter(routes);
+export const isomorphicRouter = new UniversalRouter(routes);

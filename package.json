@@ -4,7 +4,7 @@
   "description": "Dashboard which allows people to centralise their cert storage, and tap into in-house analytics to determine which course they should go to next.",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon server",
+    "server": "nodemon -r esm server",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "update": "concurrently \"npm install\" \"npm install --prefix client\" "
@@ -15,6 +15,7 @@
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "helmet": "^4.6.0",
