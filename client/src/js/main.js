@@ -7,8 +7,30 @@ import "../css/default.css";
 import "../css/mainBody.css";
 import "../css/sidebar.css";
 
-let coursesButton = document.body.querySelector("#courses");
-let courses = new CourseList();
+// mainpage function
+const mainPageFunction = () => {
+  if (window.location.pathname === "/") {
+    let coursesButton = document.querySelector("#courses");
+    let courses = new CourseList();
+
+    coursesButton.addEventListener("click", async function (e) {
+      let allCourses = await getCourses();
+      for (let [key, value] of Object.entries(allCourses)) {
+        let course = new Course(
+          value.course_id,
+          value.course_title,
+          value.num_lectures,
+          value.num_reviews,
+          value.num_subscribers,
+          value.price,
+          value.subject,
+          value.level
+        );
+        courses.addCourse(course);
+      }
+    });
+  }
+};
 
 // frontend SPA routing function
 async function render() {
@@ -17,24 +39,8 @@ async function render() {
     window.location = page.redirect;
   } else {
     document.body.innerHTML = page.content;
+    mainPageFunction();
   }
 }
 
 render(); // run client-side application
-
-coursesButton.addEventListener("click", async (e) => {
-  let allCourses = await getCourses();
-  for (let [key, value] of Object.entries(allCourses)) {
-    let course = new Course(
-      value.course_id,
-      value.course_title,
-      value.num_lectures,
-      value.num_reviews,
-      value.num_subscribers,
-      value.price,
-      value.subject,
-      value.level
-    );
-    courses.addCourse(course);
-  }
-});

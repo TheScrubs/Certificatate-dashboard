@@ -5,9 +5,6 @@ export function getCourses() {
     .get("/courses/getUdemyCourses")
     .then((res) => {
       console.log(res.data);
-      // console.log('got the data')
-      // alert("Check console.");
-      console.log(res.data);
       return res.data;
     })
     .catch((err) => {
