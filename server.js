@@ -71,12 +71,6 @@ passport.deserializeUser(function (key, done) {
 app.use("/auth", AuthRoute);
 app.use("/courses", CoursesRoute);
 
-// All code below only to be used in production
-if (process.env.NODE_ENV === "production") {
-  // set static folder
-  app.use(express.static(path.join(__dirname, "./", "client", "dist")));
-}
-
 app.get("/", (req, res) => {
   isomorphicRouter.resolve("/").then((page) => {
     if (page.redirect) {
@@ -100,6 +94,12 @@ app.get("/register", (req, res) => {
     res.send(`<!doctype html>${page.content}`);
   });
 });
+
+// All code below only to be used in production
+if (process.env.NODE_ENV === "production") {
+  // set static folder
+  app.use(express.static(path.join(__dirname, "./", "client", "dist")));
+}
 
 const PORT = process.env.PORT || 3003;
 
