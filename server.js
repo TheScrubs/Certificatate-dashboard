@@ -16,6 +16,9 @@ require("./server/config/passportStrategy").passportLinkedIn(passport);
 const CoursesRoute = require("./server/routes/CoursesRoute.js");
 const AuthRoute = require("./server/routes/AuthRoute.js").router;
 
+// isomorphicRouter
+const isomorphicRouter = require("./client/src/js/backrouter");
+
 // config dot env
 require("dotenv").config();
 
@@ -82,6 +85,12 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(
       path.resolve(__dirname, "./", "client", "dist", "Error404.html")
     );
+  });
+} else {
+  app.get("/gg", (req, res) => {
+    isomorphicRouter.resolve("/register").then((page) => {
+      res.send(`<!doctype html>${page.content}`);
+    });
   });
 }
 

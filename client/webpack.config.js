@@ -18,6 +18,7 @@ module.exports = {
   entry: {
     main: "./src/js/main.js",
     login: "./src/js/login.js",
+    register: "./src/js/register.js",
   },
   output: {
     filename: "[name].bundle.js",

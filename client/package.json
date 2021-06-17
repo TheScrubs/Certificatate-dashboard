@@ -16,8 +16,7 @@
     "@fontsource/roboto": "^4.3.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "axios": "^0.21.1",
-    "certapp": "file:..",
-    "navigo": "^8.11.1",
+    "universal-router": "^9.0.1",
     "webpack": "^5.38.1"
   },
   "devDependencies": {
