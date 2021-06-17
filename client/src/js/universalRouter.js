@@ -1,6 +1,8 @@
 import axios from "axios";
 import UniversalRouter from "universal-router";
 
+const domain = "http://localhost:8080";
+
 const routes = [
   {
     path: "/",
@@ -8,9 +10,7 @@ const routes = [
       let authenticateStatus;
 
       try {
-        const authenticate = await axios.get(
-          "http://localhost:8080/auth/check"
-        );
+        const authenticate = await axios.get(`${domain}/auth/check`);
         authenticateStatus = authenticate.data;
       } catch {
         authenticateStatus = false;
@@ -18,7 +18,7 @@ const routes = [
 
       if (authenticateStatus) {
         return axios
-          .get("http://localhost:8080/")
+          .get(`${domain}/`)
           .then((res) => {
             return { content: res.data };
           })
@@ -35,16 +35,14 @@ const routes = [
     async action() {
       let authenticateStatus;
       try {
-        const authenticate = await axios.get(
-          "http://localhost:8080/auth/check"
-        );
+        const authenticate = await axios.get(`${domain}/auth/check`);
         authenticateStatus = authenticate.data;
       } catch {
         authenticateStatus = false;
       }
       if (!authenticateStatus) {
         return axios
-          .get("http://localhost:8080/login")
+          .get(`${domain}/login`)
           .then((res) => {
             return { content: res.data };
           })
@@ -60,7 +58,7 @@ const routes = [
     path: "/register",
     action() {
       return axios
-        .get("http://localhost:8080/register")
+        .get(`${domain}/register`)
         .then((res) => {
           return { content: res.data };
         })
