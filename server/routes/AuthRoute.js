@@ -59,17 +59,31 @@ router.get(
   "/linkedin",
   passport.authenticate("linkedin", {
     successRedirect: "/",
-    failureRedirect: "/auth/login?error=true",
+    failureRedirect: "/login",
   })
 );
 
-router.get(
-  "/linkedin/callback",
-  passport.authenticate("linkedin", {
-    successRedirect: "/",
-    failureRedirect: "/auth/login?error=true",
-  })
-);
+router.get("/linkedin/callback", (req, res, next) => {
+  passport.authenticate("linkedin", (err, user, info) => {
+    if (err) {
+      // failureRedirect
+      return res.redirect("/login");
+    }
+
+    if (!user) {
+      // failureRedirect
+      return res.redirect("/login");
+    }
+
+    req.login(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      // successRedirect
+      res.redirect("/");
+    });
+  })(req, res, next);
+});
 
 module.exports = {
   router,
