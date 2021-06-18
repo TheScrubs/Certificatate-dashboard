@@ -95,6 +95,13 @@ app.get("/register", (req, res) => {
   });
 });
 
+// Error 404 *Shld be kept as the last route
+app.get("*", (req, res) => {
+  isomorphicRouter.resolve("(.*)").then((page) => {
+    res.send(`<!doctype html>${page.content}`);
+  });
+});
+
 // All code below only to be used in production
 if (process.env.NODE_ENV === "production") {
   // set static folder

@@ -67,6 +67,20 @@ const routes = [
         });
     },
   },
+  {
+    // Error 404 *Shld be kept as the last route
+    path: "(.*)",
+    action() {
+      return axios
+        .get(`${domain}/Error404`)
+        .then((res) => {
+          return { content: res.data };
+        })
+        .catch(function (err) {
+          console.log("Failed to fetch page: ", err);
+        });
+    },
+  },
 ];
 
 export const isomorphicRouter = new UniversalRouter(routes);
